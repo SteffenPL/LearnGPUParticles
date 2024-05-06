@@ -362,25 +362,17 @@ end
 
 
 
-# reset!(state)
-# update_plot!(posObs, state, params)
-# for i in 1:200 
-#     simulate!(state, params)
-#     update_plot!(posObs, state, params)
-#     sleep(0.001)
-# end
-
-
+# Run simulation
 
 # init 
 state, params = init_state()
-
 
 begin 
     reset!(state)
     fig, stateObs = init_plot(state, params)
     ax = content(fig[1,1])
 
+    # Note: runtime is faster if one is not recording a video at the same time...
     Makie.record(fig, "16-GPUCloth.mp4", 1:200; update = false, visible=true) do i 
         simulate!(state, params)
         update_plot!(stateObs, state, params)
@@ -395,8 +387,6 @@ begin
         end
     end
 end
-
-
 
 # @time simulate!(state, params, CUDABackend(), 128)
 # 0.034735 seconds (10.44 k allocations: 409.734 KiB)
