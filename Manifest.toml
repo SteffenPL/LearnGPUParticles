@@ -1,8 +1,8 @@
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.10.2"
+julia_version = "1.10.0-rc1"
 manifest_format = "2.0"
-project_hash = "2e1b8e3c86e3cd17fc30b1ada822a31aa2ffd734"
+project_hash = "73c5204071c7cdfda06d426cdc4132dbe66420ca"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -244,7 +244,7 @@ weakdeps = ["Dates", "LinearAlgebra"]
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "1.1.0+0"
+version = "1.0.5+1"
 
 [[deps.ConstructionBase]]
 deps = ["LinearAlgebra"]
@@ -1073,7 +1073,7 @@ version = "1.3.5+1"
 [[deps.OpenBLAS_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
 uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
-version = "0.3.23+4"
+version = "0.3.23+2"
 
 [[deps.OpenEXR]]
 deps = ["Colors", "FileIO", "OpenEXR_jll"]
@@ -1543,7 +1543,7 @@ deps = ["Libdl", "LinearAlgebra", "Serialization", "SparseArrays"]
 uuid = "4607b0f0-06f3-5cda-b6b1-a6196a1729e9"
 
 [[deps.SuiteSparse_jll]]
-deps = ["Artifacts", "Libdl", "libblastrampoline_jll"]
+deps = ["Artifacts", "Libdl", "Pkg", "libblastrampoline_jll"]
 uuid = "bea87d4a-7f5b-5778-9afe-8cc45184846c"
 version = "7.2.1+1"
 
