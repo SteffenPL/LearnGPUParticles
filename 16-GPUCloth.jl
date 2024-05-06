@@ -99,19 +99,21 @@ function init_state(;
 
     hostDistConstIds = Array{NTuple{2, Int32}}(undef, numDistConstraints)
 
+    LI = LinearIndices(pos)
+
     # stretch constraints
     begin
         k = 1
         for passNr in 1:2
             for i in passNr:2:size(pos,1)-1, j in 1:size(pos, 2)
-                hostDistConstIds[k] = (LinearIndices(pos)[i,j], LinearIndices(pos)[i+1,j])
+                hostDistConstIds[k] = (LI[i,j], LI[i+1,j])
                 k += 1
             end
         end
 
         for passNr in 1:2
             for i in 1:size(pos, 1), j in passNr:2:size(pos,2)-1
-                hostDistConstIds[k] = (LinearIndices(pos)[i,j], LinearIndices(pos)[i,j+1])
+                hostDistConstIds[k] = (LI[i,j], LI[i,j+1])
                 k += 1
             end
         end
@@ -119,21 +121,21 @@ function init_state(;
         # shear constraints 
 
         for i in 1:size(pos,1)-1, j in 1:size(pos,2)-1
-            hostDistConstIds[k] = (LinearIndices(pos)[i,j], LinearIndices(pos)[i+1,j+1])
+            hostDistConstIds[k] = (LI[i,j], LI[i+1,j+1])
             k += 1
-            hostDistConstIds[k] = (LinearIndices(pos)[i+1,j], LinearIndices(pos)[i,j+1])
+            hostDistConstIds[k] = (LI[i+1,j], LI[i,j+1])
             k += 1
         end
 
         # bending constraints 
 
         for i in 1:size(pos,1)-2, j in 1:size(pos,2)
-            hostDistConstIds[k] = (LinearIndices(pos)[i,j], LinearIndices(pos)[i+2,j])
+            hostDistConstIds[k] = (LI[i,j], LI[i+2,j])
             k += 1
         end
 
         for i in 1:size(pos,1), j in 1:size(pos,2)-2
-            hostDistConstIds[k] = (LinearIndices(pos)[i,j], LinearIndices(pos)[i,j+2])
+            hostDistConstIds[k] = (LI[i,j], LI[i,j+2])
             k += 1
         end
     end
